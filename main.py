@@ -18,8 +18,8 @@ screen.onkey(player.move_up, "Up")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(0.1)
     screen.update()
+    time.sleep(0.1)
 
     car_manager.move()
     # Detect when player reaches the goal (top wall)
@@ -27,11 +27,13 @@ while game_is_on:
         player.reset_position()
         scoreboard.score_increment()
     # Detect when the car reaches the left wall
-    if car_manager.xcor() < -300:
-        car_manager.reset_position()
+    for car in car_manager.car_list:
+        if car.xcor() < -300:
+            car_manager.reset_position(car)
     # Detect collision with player
-    if car_manager.distance(player) < 20:
-        scoreboard.game_over()
-        game_is_on = False
+    for car in car_manager.car_list:
+        if car.distance(player) < 20:
+            scoreboard.game_over()
+            game_is_on = False
 
 screen.exitonclick()
