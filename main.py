@@ -20,4 +20,9 @@ game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
+
     car_manager.move()
+
+    if player.ycor() > 300:
+        player.reset_position()
+        scoreboard.score_increment()
