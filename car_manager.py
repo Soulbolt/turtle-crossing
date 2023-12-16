@@ -21,3 +21,6 @@ class CarManager(Turtle):
         for dist in range(10):
             if self.xcor() > -320:
                 self.goto(new_x, self.ycor())
+
+    def reset_position(self):
+        self.goto(300, 0)

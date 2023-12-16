@@ -22,7 +22,16 @@ while game_is_on:
     screen.update()
 
     car_manager.move()
-
+    # Detect when player reaches the goal (top wall)
     if player.ycor() > 300:
         player.reset_position()
         scoreboard.score_increment()
+    # Detect when the car reaches the left wall
+    if car_manager.xcor() < -300:
+        car_manager.reset_position()
+    # Detect collision with player
+    if car_manager.distance(player) < 20:
+        scoreboard.game_over()
+        game_is_on = False
+
+screen.exitonclick()
