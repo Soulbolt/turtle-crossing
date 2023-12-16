@@ -9,8 +9,12 @@ car_manager = CarManager()
 scoreboard = Scoreboard()
 
 screen = Screen()
+screen.title("Turtle Crossing")
 screen.setup(width=600, height=600)
 screen.tracer(0)
+
+screen.listen()
+screen.onkey(player.move_up, "Up")
 
 game_is_on = True
 while game_is_on:
