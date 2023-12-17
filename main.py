@@ -18,15 +18,15 @@ screen.onkey(player.move_up, "Up")
 
 game_is_on = True
 while game_is_on:
-    time.sleep(car_manager.move_speed)
+    time.sleep(0.1)
     screen.update()
 
     car_manager.create_car()
     car_manager.move_cars()
     # Detect when player reaches the goal (top wall)
-    if player.ycor() > 300:
-        player.reset_position()
+    if player.ycor() > 280:
         car_manager.speed_increment()
+        player.reset_position()
         scoreboard.score_increment()
     # Detect when the car reaches the left wall
     # for car in car_manager.car_list:

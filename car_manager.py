@@ -13,7 +13,7 @@ class CarManager:
     def __init__(self):
         super().__init__()
         self.car_list = []
-        self.move_speed = 0.1
+        self.car_speed = STARTING_DISTANCE
 
     def create_car(self):
         random_chance = random.randint(1, 6)
@@ -28,13 +28,13 @@ class CarManager:
 
     def move_cars(self):
         for car in self.car_list:
-            car.backward(STARTING_DISTANCE)
+            car.backward(self.car_speed)
 
     def speed_increment(self):
-        self.move_speed *= 1.9
+        self.car_speed += MOVE_INCREMENT
 
     def reset_position(self, car):
         new_y = random.randint(-260, 260)
         if car in self.car_list:
             car.goto(300, new_y)
-            self.move_speed = 0.1
+            self.car_speed = 0.1
